@@ -43,7 +43,6 @@ def load_servers() -> list:
 
 
 def send_email_alert(failed_urls: list):
-    """Sends an email alert listing the down services."""
     if not failed_urls:
         return
 
@@ -137,15 +136,13 @@ def check_all_servers():
 
     print("\nStarting Server Health Checks...\n" + "—" * 50)
 
-    # Feature-8: Save failed services list
+
     failed_services = []
     results = []
 
-    # Feature-11: Run checks in parallel using Multi-threading
     with ThreadPoolExecutor(max_workers=5) as executor:
         results = list(executor.map(check_server, urls))
 
-    # Process and Print Output
     for res in results:
         print(format_result(res))
         if res["status"] in ["DOWN", "TIMEOUT"]:
