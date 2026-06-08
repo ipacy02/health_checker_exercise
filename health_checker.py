@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 
 
+
 CONFIG_FILE = "config.json"
 SLOW_THRESHOLD_MS = 500
 TIMEOUT_SECONDS = 5.0
